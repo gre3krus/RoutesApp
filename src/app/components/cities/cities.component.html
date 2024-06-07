@@ -1,12 +1,29 @@
 <div class="route">
     <div class="choice">
-        <input type="text" placeholder="Откуда">
-        <!-- DropDown -->
-        <input type="text" placeholder="Куда">
+
+       <button (click)="dropStart()">Откуда</button>
+       <div class="from" [class.openStart]="openStart">
+        <section [(ngModel)]="start" (change)="addStart()">
+            <option class="city" *ngFor="let city of this.routerService.jsonRouter">{{city.from}}</option>
+        </section>
+       </div>
+       <span>Город</span>
+
+       <button (click)="dropFinish()">Куда</button>
+       <div class="to" [class.openFinish]="openFinish">
+        <section [(ngModel)]="finish" (change)="addFinish()">
+            <option class="cities" *ngFor="let cities of this.routerService.jsonRouter">
+                <ng-container *ngFor="let routes of cities.travel">
+                    {{ routes.to }}
+                </ng-container>
+            </option>
+        </section>
+       </div>
+       <span>Город</span>
+
     </div>
     <div class="table">
         <app-table></app-table>
     </div>
 </div>
-    
 

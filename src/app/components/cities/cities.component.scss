@@ -4,4 +4,89 @@
     justify-content: center;
     align-items: center;
     gap: 15px;
+    height: 50vh;
+
+    padding: 5vh 5vw 5vh 5vw;
+
+}
+
+.choice {
+    position: relative;
+    top: 50%;
+}
+
+.choice button {
+    cursor: pointer;
+    padding: 10px;
+    background-color: aqua;
+    width: 170px;
+    border: none;
+    margin: 0px 25px 0px 25px;
+    transition: 0.5s;
+}
+
+.choice button:hover {
+    color: red;
+    border-radius: 14px;
+    background-color: aquamarine;
+}
+
+.from {
+    display: none;
+}
+
+.openStart {
+    display: block !important;
+    position: absolute;
+    left: 25px;
+    cursor: pointer;
+    user-select: none;
+    background-color: #f1f1f1;
+    box-shadow: 0 0 10px black;
+    margin-top: 10px;
+    z-index: 1;
+}
+
+section {
+    overflow-y: scroll;
+    height: 145px;
+}
+
+.city {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.city:hover {
+    background-color: #ddd;
+}
+
+.to {
+    display: none;
+}
+
+.openFinish {
+    display: block !important;
+    position: absolute;
+    left: 285px;
+    width: 170px;
+    cursor: pointer;
+    user-select: none;
+    background-color: #f1f1f1;
+    box-shadow: 0 0 10px black;
+    margin-top: 10px;
+    z-index: 1;
+}
+
+.cities {
+    display: block;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+}
+
+.cities:hover {
+    background-color: #ddd;
 }

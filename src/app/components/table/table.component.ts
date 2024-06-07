@@ -7,15 +7,14 @@ import { RouterService } from 'src/app/services/router.service'
   styleUrls: ['./table.component.scss']
 })
 export class TableComponent implements OnInit {
-  jsonRouter: any[] = []
+
 
   constructor(private routerService: RouterService) { }
 
   ngOnInit(): void {
-    this.routerService.getJsonData().subscribe((data: any) => {
-      this.jsonRouter = data;
-    });
-
+    this.routerService.getJsonRouter
   }
+
+  
 
 }
