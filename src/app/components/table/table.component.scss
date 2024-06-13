@@ -1,0 +1,39 @@
+table {
+    width: 1290px;
+}
+
+th {
+    color: #1b1f3b;
+    letter-spacing: 0.9px;
+    user-select: none;
+    font-family: "Comfortaa", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    text-align: center;
+
+    padding: 10px 5px 10px 5px;
+}
+
+td {
+    color: white;
+    letter-spacing: 0.9px;
+    user-select: none;
+    font-family: "Comfortaa", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    text-align: center;
+    // line-height: 25px;
+    white-space: nowrap;
+
+    padding: 10px 5px 10px 5px;
+}
+
+tbody tr:nth-child(odd) {
+    background-color:  #526ed3;
+}
+  
+tbody tr:nth-child(even) {
+    background-color: #6c86e2;
+}

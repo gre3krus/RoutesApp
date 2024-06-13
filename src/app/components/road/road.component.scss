@@ -1,0 +1,30 @@
+.table {
+    display: none;
+}
+
+.openTable {
+    display: block;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button {
+    letter-spacing: 0.9px;
+    user-select: none;
+    font-family: "Comfortaa", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+
+    cursor: pointer;
+    padding: 10px;
+    color: white;
+    background-color: rgb(0, 107, 107);
+    width: 170px;
+    border: none;
+    transition: 0.5s;
+}

@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { CitiesComponent } from './components/cities/cities.component';
 import { TableComponent } from './components/table/table.component';
 import { FormsModule } from '@angular/forms';
+import { RoadComponent } from './components/road/road.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     CitiesComponent,
-    TableComponent
+    TableComponent,
+    RoadComponent
   ],
   imports: [
     BrowserModule,

@@ -3,27 +3,26 @@
 
        <button (click)="dropStart()">Откуда</button>
        <div class="from" [class.openStart]="openStart">
-        <section [(ngModel)]="start" (change)="addStart()">
-            <option class="city" *ngFor="let city of this.routerService.jsonRouter">{{city.from}}</option>
+        <section>
+                <option class="city" *ngFor="let city of this.routerService.jsonRouter" [class.selected]="city === selectedCity" (click)="getStart(city); dropStart()">
+                    {{city.from}}
+                </option>
         </section>
        </div>
-       <span>Город</span>
+       <span class="selected">{{ start?.from }}</span>
 
        <button (click)="dropFinish()">Куда</button>
        <div class="to" [class.openFinish]="openFinish">
-        <section [(ngModel)]="finish" (change)="addFinish()">
-            <option class="cities" *ngFor="let cities of this.routerService.jsonRouter">
-                <ng-container *ngFor="let routes of cities.travel">
-                    {{ routes.to }}
-                </ng-container>
+        <section>
+            <option class="cities" *ngFor="let cities of this.routerService.jsonRouter" (click)="getFinish(cities); dropFinish()">
+                {{ cities.from }}
             </option>
         </section>
        </div>
-       <span>Город</span>
+       <span class="selected">{{ finish?.from }}</span>
 
     </div>
-    <div class="table">
-        <app-table></app-table>
-    </div>
+
+    <app-road [selectedStart]="start" [selectedFinish]="finish"></app-road>
 </div>
 

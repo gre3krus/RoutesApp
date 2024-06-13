@@ -9,8 +9,9 @@ import { RouterService, RoutingType } from 'src/app/services/router.service';
 })
 
 export class CitiesComponent implements OnInit {
-  start: string = ''
-  finish: string = ''
+  start?: RoutingType
+  finish?: RoutingType
+  selectedCity!: RoutingType
   openStart: boolean = false
   openFinish: boolean = false
 
@@ -35,15 +36,13 @@ export class CitiesComponent implements OnInit {
     }
   }
 
-  addStart() {
-    if (this.start) {
-      
-    }
+  getStart(city: RoutingType): any {
+    this.start = city
+    console.log(this.start.from)
   }
 
-  addFinish() {
-    if (this.finish) {
-      
-    }
+  getFinish(cities: RoutingType): any {
+    this.finish = cities
+    console.log(this.finish.from)
   }
 }

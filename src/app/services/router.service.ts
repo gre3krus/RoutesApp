@@ -14,10 +14,9 @@ export class RouterService {
     return this.http.get<RoutingType[]>('assets/routes.json');
   }
 
-  getJsonRouter(): void {
+  getJsonRouter(): any {
     this.getJsonData().subscribe((data: any) => {
       this.jsonRouter = data
-      console.log(this.jsonRouter)
     })
   }
 }

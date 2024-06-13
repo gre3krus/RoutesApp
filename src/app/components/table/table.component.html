@@ -1,16 +1,21 @@
 <table>
     <thead>
         <tr>
-            <th></th>
-            <th></th>
+            <th>Откуда</th>
+            <th>Куда</th>
+            <th>Цена</th>
+            <th>Время</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody *ngFor="let cities of this.routerService.jsonRouter">
         <tr>
-            <td></td>
-            <td></td>
+            <td>{{ cities.from }}</td>
+            <ng-container *ngFor="let routes of cities.travel">
+                <td>{{ routes.to }}</td>
+                <td>{{ routes.price }}</td>
+                <td>{{ routes.time }}</td>
+            </ng-container>
         </tr>
-
     </tbody>
 </table>
 
