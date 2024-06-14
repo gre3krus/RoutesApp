@@ -10,7 +10,7 @@ import { RouterService, RoutingType } from 'src/app/services/router.service';
 
 export class CitiesComponent implements OnInit {
   start?: RoutingType
-  finish?: RoutingType
+  finish!: RoutingType
   selectedCity!: RoutingType
   openStart: boolean = false
   openFinish: boolean = false
@@ -38,11 +38,11 @@ export class CitiesComponent implements OnInit {
 
   getStart(city: RoutingType): any {
     this.start = city
-    console.log(this.start.from)
+    console.log(city.from)
   }
 
   getFinish(cities: RoutingType): any {
     this.finish = cities
-    console.log(this.finish.from)
+    console.log(cities.from)
   }
 }

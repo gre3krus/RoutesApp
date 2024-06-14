@@ -4,7 +4,7 @@
        <button (click)="dropStart()">Откуда</button>
        <div class="from" [class.openStart]="openStart">
         <section>
-                <option class="city" *ngFor="let city of this.routerService.jsonRouter" [class.selected]="city === selectedCity" (click)="getStart(city); dropStart()">
+                <option class="city" *ngFor="let city of this.routerService.jsonRouter" (click)="getStart(city); dropStart()">
                     {{city.from}}
                 </option>
         </section>

@@ -7,7 +7,7 @@
             <th>Время</th>
         </tr>
     </thead>
-    <tbody *ngFor="let cities of this.routerService.jsonRouter">
+    <tbody *ngFor="let cities of loadRoute">
         <tr>
             <td>{{ cities.from }}</td>
             <ng-container *ngFor="let routes of cities.travel">
