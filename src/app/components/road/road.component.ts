@@ -30,11 +30,21 @@ export class RoadComponent implements OnInit {
 
     for(let get of filtered){
       this.route.push({
-        
+        from: this.selectedStart.from,
+        to: this.selectedFinish.from,
+        price: get.price,
+        time: get.time
       })
       console.log(`Цена: ${get.price} рублей, Время: ${get.time}`)
     }
     this.openTable = !this.openTable
+    if(this.openTable === false){
+      this.route = []
+    } else if(this.route.length === 0){
+      this.openTable = false
+      alert('Маршрут не найден')
+    }
+
     console.log(this.route)
   }
 }

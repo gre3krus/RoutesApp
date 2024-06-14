@@ -10,11 +10,11 @@
     <tbody *ngFor="let cities of loadRoute">
         <tr>
             <td>{{ cities.from }}</td>
-            <ng-container *ngFor="let routes of cities.travel">
-                <td>{{ routes.to }}</td>
-                <td>{{ routes.price }}</td>
-                <td>{{ routes.time }}</td>
-            </ng-container>
+            <!-- <ng-container *ngFor="let routes of cities.travel"> -->
+                <td>{{ cities.to }}</td>
+                <td>{{ cities.price }} ₽</td>
+                <td>{{ cities.time }} ч</td>
+            <!-- </ng-container> -->
         </tr>
     </tbody>
 </table>

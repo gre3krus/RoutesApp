@@ -2,5 +2,5 @@
     <button (click)="getRoad()">Рассчитать</button>
 </div>
 <div class="table" [class.openTable]="openTable">
-    <app-table></app-table>
+    <app-table [loadRoute]="route"></app-table>
 </div>
