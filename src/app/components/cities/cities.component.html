@@ -23,6 +23,18 @@
 
     </div>
 
-    <app-road [selectedStart]="start" [selectedFinish]="finish"></app-road>
+    <div class="categories">
+        <input type="checkbox" (change)="handleChangeStandart()" [checked]="standart">
+        <p>Стандартно</p>
+        <input type="checkbox" (change)="handleChangeFaster()" [checked]="faster">
+        <p>Быстро</p>
+    </div>
+    <app-road
+    [selectedStart]="start" 
+    [selectedFinish]="finish"
+    [changeStandart]="standart" 
+    [changeFaster]="faster"
+    >
+    </app-road>
 </div>
 

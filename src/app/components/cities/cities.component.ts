@@ -11,9 +11,10 @@ import { RouterService, RoutingType } from 'src/app/services/router.service';
 export class CitiesComponent implements OnInit {
   start?: RoutingType
   finish!: RoutingType
-  selectedCity!: RoutingType
   openStart: boolean = false
   openFinish: boolean = false
+  standart: boolean = false
+  faster: boolean = false
 
   constructor(public routerService: RouterService) {this.routerService.jsonRouter = []}
   
@@ -44,5 +45,19 @@ export class CitiesComponent implements OnInit {
   getFinish(cities: RoutingType): any {
     this.finish = cities
     console.log(cities.from)
+  }
+
+  handleChangeStandart(): any {
+    this.standart = !this.standart
+    if(this.standart === true){
+      this.faster = false
+    }
+  }
+
+  handleChangeFaster(): any {
+    this.faster = !this.faster
+    if(this.faster === true){
+      this.standart = false
+    }
   }
 }

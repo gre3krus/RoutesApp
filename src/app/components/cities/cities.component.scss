@@ -57,7 +57,7 @@ button {
     background-color: rgb(93, 223, 180);
 }
 
-.selected {
+.selected, p {
     letter-spacing: 0.9px;
     user-select: none;
     font-family: "Comfortaa", sans-serif;
@@ -126,4 +126,51 @@ section {
 
 .cities:hover {
     background-color: #ddd;
+}
+
+.categories {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    width: 400px;
+    background-color: white;
+    border-radius: 15px;
+    padding: 1.5vw;
+    border: none;
+    box-shadow: 0 0 10px black;
+}
+
+input {
+    position: relative;
+    width: 50px;
+    height: 20px;
+    -webkit-appearance: none;
+    outline: none;
+    background: #c6c6c6;
+    border-radius: 20px;
+    transition: .5s;
+    box-shadow: inset 0 0 5px rgba(0,0,0,.2);
+}
+
+input:checked {
+    background: rgb(69, 167, 134);
+}
+
+input:before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    top: 0;
+    left: 0;
+    background: #fff;
+    transition: .4s;
+    transform: scale(1.1);
+    box-shadow: 0 0 5px black
+}
+
+input:checked::before {
+    left: 30px;
 }

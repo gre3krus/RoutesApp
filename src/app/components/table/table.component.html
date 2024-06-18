@@ -1,3 +1,4 @@
+<span>Стандартно</span>
 <table>
     <thead>
         <tr>
@@ -10,12 +11,44 @@
     <tbody *ngFor="let cities of loadRoute">
         <tr>
             <td>{{ cities.from }}</td>
-            <!-- <ng-container *ngFor="let routes of cities.travel"> -->
-                <td>{{ cities.to }}</td>
-                <td>{{ cities.price }} ₽</td>
-                <td>{{ cities.time }} ч</td>
-            <!-- </ng-container> -->
+            <td>{{ cities.to }}</td>
+            <td>{{ cities.price }} ₽</td>
+            <td>{{ cities.time }} ч</td>
         </tr>
     </tbody>
+    <tfoot *ngFor="let total of loadTotal">
+        <tr>
+            <th colspan="2">Всего</th>
+            <td>{{ total.totalP }} ₽</td>
+            <td>{{ total.totalT }} ч</td>
+        </tr>
+    </tfoot>
+</table>
+
+<span>Быстро</span>
+<table>
+    <thead>
+        <tr>
+            <th>Откуда</th>
+            <th>Куда</th>
+            <th>Цена</th>
+            <th>Время</th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let cities of loadRoute">
+        <tr>
+            <td>{{ cities.from }}</td>
+            <td>{{ cities.to }}</td>
+            <td>{{ cities.price }} ₽</td>
+            <td>{{ cities.time }} ч</td>
+        </tr>
+    </tbody>
+    <tfoot *ngFor="let total of loadTotal">
+        <tr>
+            <th colspan="2">Всего</th>
+            <td>{{ total.totalP }} ₽</td>
+            <td>{{ total.totalT }} ч</td>
+        </tr>
+    </tfoot>
 </table>
 
