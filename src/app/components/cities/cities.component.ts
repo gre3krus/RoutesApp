@@ -11,10 +11,13 @@ import { RouterService, RoutingType } from 'src/app/services/router.service';
 export class CitiesComponent implements OnInit {
   start?: RoutingType
   finish!: RoutingType
+
   openStart: boolean = false
   openFinish: boolean = false
-  standart: boolean = false
+
+  economy: boolean = false
   faster: boolean = false
+  lowTransfers: boolean = false
 
   constructor(public routerService: RouterService) {this.routerService.jsonRouter = []}
   
@@ -47,17 +50,27 @@ export class CitiesComponent implements OnInit {
     console.log(cities.from)
   }
 
-  handleChangeStandart(): any {
-    this.standart = !this.standart
-    if(this.standart === true){
+  handleChangeEconomy(): any {
+    this.economy = !this.economy
+    if(this.economy === true){
       this.faster = false
+      this.lowTransfers = false
     }
   }
 
   handleChangeFaster(): any {
     this.faster = !this.faster
     if(this.faster === true){
-      this.standart = false
+      this.economy = false
+      this.lowTransfers = false
+    }
+  }
+
+  handleChangeLowTransfers(): any {
+    this.lowTransfers = !this.lowTransfers
+    if(this.lowTransfers === true){
+      this.economy = false
+      this.faster = false
     }
   }
 }

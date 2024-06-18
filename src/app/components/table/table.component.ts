@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { RouterService, RoutingType } from 'src/app/services/router.service'
+import { RouterService } from 'src/app/services/router.service'
 
 @Component({
   selector: 'app-table',

@@ -24,16 +24,26 @@
     </div>
 
     <div class="categories">
-        <input type="checkbox" (change)="handleChangeStandart()" [checked]="standart">
-        <p>Стандартно</p>
-        <input type="checkbox" (change)="handleChangeFaster()" [checked]="faster">
-        <p>Быстро</p>
+        <div class="changes">
+            <p>Экономно</p>
+            <input type="checkbox" (change)="handleChangeEconomy()" [checked]="economy">
+        </div>
+        <div class="changes">
+            <p>Быстро</p>
+            <input type="checkbox" (change)="handleChangeFaster()" [checked]="faster">
+        </div>
+        <div class="changes">
+            <p>Меньше пересадок</p>
+            <input type="checkbox" (change)="handleChangeLowTransfers()" [checked]="lowTransfers">
+        </div>
+        
     </div>
     <app-road
     [selectedStart]="start" 
     [selectedFinish]="finish"
-    [changeStandart]="standart" 
+    [changeEconomy]="economy" 
     [changeFaster]="faster"
+    [changeLowTransfers]="lowTransfers"
     >
     </app-road>
 </div>

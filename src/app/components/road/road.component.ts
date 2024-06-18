@@ -10,8 +10,9 @@ import { RouterService, RoutingType } from 'src/app/services/router.service'
 export class RoadComponent implements OnInit {
   @Input() selectedStart?: RoutingType
   @Input() selectedFinish!: RoutingType
-  @Input() changeStandart: boolean = false
+  @Input() changeEconomy: boolean = false
   @Input() changeFaster: boolean = false
+  @Input() changeLowTransfers: boolean = false
   openTable: boolean = false
   route: any[] = []
   total: any[] = []
@@ -28,9 +29,10 @@ export class RoadComponent implements OnInit {
   getRoad(): any {
     if (!this.selectedStart || !this.selectedFinish) {
       return alert('Выберите маршрут')
-    } else if(this.changeStandart === false && this.changeFaster === false){
-      return alert('Выберите Стандартно или Быстро')
-    }
+    } else if(this.changeEconomy === false && this.changeFaster === false && this.changeLowTransfers === false){
+      this.openTable = false
+      return alert('Выберите Экономно, Быстро или Меньше пересадок')
+    } 
 
     this.route = [];
     this.total = []

@@ -130,15 +130,21 @@ section {
 
 .categories {
     display: flex;
-    align-items: center;
     justify-content: center;
-    gap: 15px;
-    width: 400px;
+    flex-direction: column;
+    gap: 20px;
+    width: 250px;
     background-color: white;
     border-radius: 15px;
     padding: 1.5vw;
     border: none;
     box-shadow: 0 0 10px black;
+}
+
+.changes {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 input {
