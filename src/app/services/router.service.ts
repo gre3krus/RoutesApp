@@ -22,8 +22,8 @@ export class RouterService {
 }
 
 export type RoutingType = {
-  from: string,
-  travel: travel[]
+  from?: string,
+  travel?: travel[]
 }
 
 export type travel = {

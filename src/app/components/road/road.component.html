@@ -1,6 +1,13 @@
 <div class="btn">
-    <button (click)="getRoad()">Рассчитать</button>
+    <button (click)="loader()">Рассчитать</button>
 </div>
+
+<div class="back-load" [class.backLoad]="backLoad">
+    <div class="load-none" [class.load]="load">
+        <hr/><hr/><hr/><hr/>
+    </div>
+</div>
+
 <div class="table" [class.openTable]="openTable">
     <app-table [loadRoute]="route" [loadTotal]="total"></app-table>
 </div>

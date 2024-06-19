@@ -9,15 +9,18 @@ import { RouterService, RoutingType } from 'src/app/services/router.service'
 
 export class RoadComponent implements OnInit {
   @Input() selectedStart?: RoutingType
-  @Input() selectedFinish!: RoutingType
+  @Input() selectedFinish?: RoutingType;
   @Input() changeEconomy: boolean = false
   @Input() changeFaster: boolean = false
   @Input() changeLowTransfers: boolean = false
   openTable: boolean = false
+  load: boolean = false
+  backLoad: boolean = false
   route: any[] = []
   total: any[] = []
   totalPrice: number = 0
   totalTime: number = 0
+  totalTransfers: number = 0
 
   constructor(public routerService: RouterService) {this.routerService.jsonRouter = []}
 
@@ -26,19 +29,32 @@ export class RoadComponent implements OnInit {
     this.routerService.getJsonRouter()
   }
 
+  loader(): any {
+    this.load = true
+    this.backLoad = true
+    setTimeout(() => {
+      this.getRoad()
+      // this.load = false
+    }, 1000);
+
+  }
+
   getRoad(): any {
     if (!this.selectedStart || !this.selectedFinish) {
       return alert('Выберите маршрут')
     } else if(this.changeEconomy === false && this.changeFaster === false && this.changeLowTransfers === false){
       this.openTable = false
       return alert('Выберите Экономно, Быстро или Меньше пересадок')
-    } 
+    }
 
+
+    
     this.route = [];
     this.total = []
     this.totalPrice = 0
     this.totalTime = 0
-    this.findRoutes(this.selectedStart.from, this.selectedFinish.from, []);
+    this.totalTransfers = 0
+    this.findRoutesEconomy(this.selectedStart.from, this.selectedFinish.from, []);
 
     this.openTable = this.route.length > 0;
     if (!this.openTable) {
@@ -47,11 +63,12 @@ export class RoadComponent implements OnInit {
 
     this.total.push({
       totalP: this.totalPrice,
-      totalT: this.totalTime
+      totalT: this.totalTime,
+      totalTran: this.totalTransfers
     })
   }
 
-  findRoutes(currentCity: string, targetCity: string, visited: any[]): any {
+  findRoutesEconomy(currentCity?: string, targetCity?: string, visited?: any[]): any {
     if (currentCity === targetCity) {
       return true
     }
@@ -62,8 +79,8 @@ export class RoadComponent implements OnInit {
     }
 
     for (let travel of currentRoutes.travel) {
-      if (!visited.includes(travel.to)) {
-        visited.push(travel.to)
+      if (!visited?.includes(travel.to)) {
+        visited?.push(travel.to)
 
         this.route.push({
           from: currentCity,
@@ -72,18 +89,19 @@ export class RoadComponent implements OnInit {
           time: travel.time,
         })
 
-        if (this.findRoutes(travel.to, targetCity, visited)) {
+
+        if (this.findRoutesEconomy(travel.to, targetCity, visited)) {
           this.totalPrice += travel.price
           this.totalTime += travel.time
+          this.totalTransfers = visited!.length - 1
           return true
         }
   
         this.route.pop()
-        visited.pop()
+        visited?.pop()
       }
     }
 
-    console.log(this.route)
     return false
   }
 }

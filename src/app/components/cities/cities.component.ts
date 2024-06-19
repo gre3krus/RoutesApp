@@ -10,7 +10,7 @@ import { RouterService, RoutingType } from 'src/app/services/router.service';
 
 export class CitiesComponent implements OnInit {
   start?: RoutingType
-  finish!: RoutingType
+  finish?: RoutingType
 
   openStart: boolean = false
   openFinish: boolean = false
