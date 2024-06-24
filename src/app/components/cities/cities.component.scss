@@ -47,12 +47,12 @@ button {
     background-color: rgb(0, 107, 107);
     width: 170px;
     border: none;
-    transition: 0.5s;
+    transition: .2s;
 }
 
 .choice button:hover {
     color: black;
-    border-radius: 14px;
+    border-radius: 20px;
     background-color: rgb(93, 223, 180);
 }
 
@@ -72,7 +72,7 @@ button {
 .openStart {
     display: block !important;
     position: absolute;
-    left: 33px;
+    left: 27px;
     top: 70%;
     cursor: pointer;
     user-select: none;
@@ -88,6 +88,13 @@ section {
 }
 
 .city {
+    letter-spacing: 0.9px;
+    user-select: none;
+    font-family: "Comfortaa", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+
     color: black;
     padding: 12px 16px;
     text-decoration: none;
@@ -95,7 +102,7 @@ section {
 }
 
 .city:hover {
-    background-color: #ddd;
+    background-color: rgb(93, 223, 180);
 }
 
 .to {
@@ -105,9 +112,8 @@ section {
 .openFinish {
     display: block !important;
     position: absolute;
-    left: 245px;
+    left: 272px;
     top: 70%;
-    width: 170px;
     cursor: pointer;
     user-select: none;
     background-color: #f1f1f1;
@@ -117,6 +123,13 @@ section {
 }
 
 .cities {
+    letter-spacing: 0.9px;
+    user-select: none;
+    font-family: "Comfortaa", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+
     display: block;
     color: black;
     padding: 12px 16px;
@@ -124,7 +137,7 @@ section {
 }
 
 .cities:hover {
-    background-color: #ddd;
+    background-color: rgb(93, 223, 180);
 }
 
 .categories {
@@ -153,6 +166,7 @@ input {
     -webkit-appearance: none;
     outline: none;
     background: #c6c6c6;
+    cursor: pointer;
     border-radius: 20px;
     transition: .2s;
     box-shadow: inset 0 0 5px rgba(0,0,0,.2);
@@ -167,7 +181,7 @@ input:before {
     position: absolute;
     width: 20px;
     height: 20px;
-    border-radius: 20px;
+    border-radius: 50%;
     top: 0;
     left: 0;
     background: #fff;

@@ -38,15 +38,6 @@ button:hover {
     display: none;
 }
 
-.backLoad {
-    display: block;
-    position: absolute;
-    z-index: 10000;
-    background-color: black;
-    min-width: 100%;
-    min-height: 100%;
-}
-
 .load {
     display: block;
     position:absolute;
@@ -68,13 +59,16 @@ button:hover {
 }
   
 .load :first-child {
-    background:#19A68C;animation-delay:-1.5s
+    background:#19A68C;
+    animation-delay:-1.5s
 }
   .load :nth-child(2){
-    background:#F63D3A;animation-delay:-1s
+    background:#006b6b;
+    animation-delay:-1s
 }
   .load :nth-child(3){
-    background:#FDA543;animation-delay:-0.5s
+    background:#526ed3;
+    animation-delay:-0.5s
 }
   .load :last-child{
     background:#193B48

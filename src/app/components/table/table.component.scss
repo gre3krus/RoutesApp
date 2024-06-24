@@ -33,18 +33,6 @@ td {
 tbody tr:nth-child(odd) {
     background-color:  #526ed3;
 }
-  
-tbody tr:nth-child(even) {
-    background-color: #6c86e2;
-}
-
-tfoot tr:nth-child(odd) {
-    background-color:  #526ed3;
-}
-  
-tfoot tr:nth-child(even) {
-    background-color: #6c86e2;
-}
 
 tfoot th {
     color: white;
@@ -59,4 +47,8 @@ tfoot th {
     white-space: nowrap;
 
     padding: 10px 5px 10px 5px;
+}
+
+tfoot tr:nth-child(odd) {
+    background-color: rgb(0, 107, 107);
 }

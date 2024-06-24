@@ -28,14 +28,14 @@ export class CitiesComponent implements OnInit {
 
   dropStart(): any {
     this.openStart = !this.openStart
-    if(this.openFinish === true) {
+    if(this.openFinish) {
       this.openFinish = !this.openFinish
     }
   }
 
   dropFinish(): any {
     this.openFinish = !this.openFinish
-    if(this.openStart === true){
+    if(this.openStart){
       this.openStart = !this.openStart
     }
   }
@@ -52,7 +52,7 @@ export class CitiesComponent implements OnInit {
 
   handleChangeEconomy(): any {
     this.economy = !this.economy
-    if(this.economy === true){
+    if(this.economy){
       this.faster = false
       this.lowTransfers = false
     }
@@ -60,7 +60,7 @@ export class CitiesComponent implements OnInit {
 
   handleChangeFaster(): any {
     this.faster = !this.faster
-    if(this.faster === true){
+    if(this.faster){
       this.economy = false
       this.lowTransfers = false
     }
@@ -68,7 +68,7 @@ export class CitiesComponent implements OnInit {
 
   handleChangeLowTransfers(): any {
     this.lowTransfers = !this.lowTransfers
-    if(this.lowTransfers === true){
+    if(this.lowTransfers){
       this.economy = false
       this.faster = false
     }
