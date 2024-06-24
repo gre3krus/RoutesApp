@@ -5,7 +5,7 @@
        <div class="from" [class.openStart]="openStart">
         <section>
                 <option class="city" *ngFor="let city of this.routerService.jsonRouter" (click)="getStart(city); dropStart()">
-                    {{city.from}}
+                    {{ city.from }}
                 </option>
         </section>
        </div>

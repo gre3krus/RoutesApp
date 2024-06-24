@@ -16,4 +16,17 @@ export class TableComponent implements OnInit {
     this.routerService.getJsonRouter()
   }
 
+  getPlural(totalTran: number): any {
+    let ruPlural = new Intl.PluralRules('ru')
+    let rule = ruPlural.select(totalTran)
+
+    if(rule === 'few'){
+      return 'Пересадки'
+    } else if(rule === 'one') {
+      return 'Пересадка'
+    } else {
+      return 'Пересадок'
+    }
+  }
+
 }

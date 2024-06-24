@@ -18,7 +18,7 @@
     <tfoot *ngFor="let total of loadTotal">
         <tr>
             <th colspan="1">ВСЕГО</th>
-            <td>Пересадок {{ total.totalTran }}</td>
+            <td>  {{ total.totalTran }} {{ getPlural(total.totalTran) }}</td>
             <td>{{ total.totalP }} ₽</td>
             <td>{{ total.totalT }} ч</td>
         </tr>

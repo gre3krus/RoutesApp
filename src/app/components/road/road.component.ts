@@ -23,7 +23,6 @@ export class RoadComponent implements OnInit {
 
   constructor(public routerService: RouterService) {this.routerService.jsonRouter = []}
 
-
   ngOnInit(): void {
     this.routerService.getJsonRouter()
   }
