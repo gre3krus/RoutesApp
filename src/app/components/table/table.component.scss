@@ -2,6 +2,30 @@ table {
     width: 900px;
 }
 
+@media (max-width: 1024px) {
+    table {
+        width: 600px;
+    }
+}
+
+@media (max-width: 768px) {
+    table {
+        width: 400px;
+    }
+}
+
+// @media (max-width: 425px) {
+//     table {
+//         width: 200px;
+//     }
+// }
+
+// @media (max-width: 375px) {
+//     table {
+//         width: 80px;
+//     }
+// }
+
 th {
     color: #1b1f3b;
     letter-spacing: 0.9px;
