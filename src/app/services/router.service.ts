@@ -6,23 +6,23 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class RouterService {
-  jsonRouter: any[] = []
+  jsonRouter: RoutingType[] = []
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getJsonData(): Observable<RoutingType[]> {
     return this.http.get<RoutingType[]>('assets/routes.json');
   }
 
-  getJsonRouter(): any {
-    this.getJsonData().subscribe((data: any) => {
+  getJsonRouter(): void {
+    this.getJsonData().subscribe((data: RoutingType[]) => {
       this.jsonRouter = data
     })
   }
 }
 
 export type RoutingType = {
-  from?: string,
+  from: string,
   travel?: travel[]
 }
 

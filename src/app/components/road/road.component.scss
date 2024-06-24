@@ -34,7 +34,7 @@ button:hover {
     border-radius: 14px;
 }
 
-.load-none, .back-load {
+.load-none {
     display: none;
 }
 
@@ -57,7 +57,7 @@ button:hover {
     border-radius:50%;
     animation:spin 2s ease infinite;
 }
-  
+
 .load :first-child {
     background:#19A68C;
     animation-delay:-1.5s
@@ -73,7 +73,7 @@ button:hover {
   .load :last-child{
     background:#193B48
 }
-  
+
   @keyframes spin {
     0%,100%{
         transform:translate(0)

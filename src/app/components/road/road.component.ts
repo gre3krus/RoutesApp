@@ -1,5 +1,5 @@
-import { Component, OnInit, Input} from '@angular/core';
-import { RouterService, RoutingType } from 'src/app/services/router.service'
+import { Component, OnInit, Input } from '@angular/core';
+import { RouterService, RoutingType, travel } from 'src/app/services/router.service';
 
 @Component({
   selector: 'app-road',
@@ -8,8 +8,8 @@ import { RouterService, RoutingType } from 'src/app/services/router.service'
 })
 
 export class RoadComponent implements OnInit {
-  @Input() selectedStart?: RoutingType
-  @Input() selectedFinish?: RoutingType;
+  @Input() selectedStart?: string
+  @Input() selectedFinish?: string
   @Input() changeEconomy: boolean = false
   @Input() changeFaster: boolean = false
   @Input() changeLowTransfers: boolean = false
@@ -21,27 +21,30 @@ export class RoadComponent implements OnInit {
   totalTime: number = 0
   totalTransfers: number = 0
 
-  constructor(public routerService: RouterService) {this.routerService.jsonRouter = []}
+  constructor(public routerService: RouterService) {}
 
   ngOnInit(): void {
     this.routerService.getJsonRouter()
   }
 
-  loader(): any {
+  loader(): void {
     this.load = true
     setTimeout(() => {
       this.load = false
       this.getRoad()
-    }, 600);
-
+    }, 600)
   }
 
-  getRoad(): any {
+  getRoad(): void {
     if (!this.selectedStart || !this.selectedFinish) {
-      return alert('Выберите маршрут')
-    } else if(this.changeEconomy === false && this.changeFaster === false && this.changeLowTransfers === false){
+      alert('Выберите маршрут')
+      return
+    }
+
+    if (!this.changeEconomy && !this.changeFaster && !this.changeLowTransfers) {
       this.openTable = false
-      return alert('Выберите Экономно, Быстро или Меньше пересадок')
+      alert('Выберите Экономно, Быстро или Меньше пересадок')
+      return
     }
 
     this.route = []
@@ -50,133 +53,103 @@ export class RoadComponent implements OnInit {
     this.totalTime = 0
     this.totalTransfers = 0
 
-    if(this.changeEconomy){
-      this.findRoutesEconomy(this.selectedStart.from, this.selectedFinish.from, [])
-    } else if(this.changeFaster) {
-      this.findRoutesFastest(this.selectedStart.from, this.selectedFinish.from, [])
-    } else if(this.changeLowTransfers) {
-      this.findRoutesLowTransfers(this.selectedStart.from, this.selectedFinish.from, [])
-    }
+    if (this.selectedStart === this.selectedFinish) {
+      this.handlePushRoute()
+    } else {
+      const allRoutes = this.findRoutes(this.selectedStart, this.selectedFinish, [], [])
 
-    this.openTable = this.route.length > 0
-    if (!this.openTable) {
-      alert('Маршрут не найден')
-    }
+      if (this.changeEconomy) {
+        allRoutes.sort((a, b) => a.totalPrice - b.totalPrice)
+      } else if (this.changeFaster) {
+        allRoutes.sort((a, b) => a.totalTime - b.totalTime)
+      } else if (this.changeLowTransfers) {
+        allRoutes.sort((a, b) => a.totalTransfers - b.totalTransfers)
+      }
 
-    this.total.push({
-      totalP: this.totalPrice,
-      totalT: this.totalTime,
-      totalTran: this.totalTransfers
-    })
-    console.log(this.route)
+      if (allRoutes.length > 0) {
+        const bestRoute = allRoutes[0];
+        this.route = bestRoute.path;
+        this.totalPrice = bestRoute.totalPrice
+        this.totalTime = bestRoute.totalTime
+        this.totalTransfers = bestRoute.totalTransfers
+        this.openTable = true
+      } else {
+        this.openTable = false
+        alert('Маршрут не найден')
+      }
+
+      this.total.push({
+        totalP: this.totalPrice,
+        totalT: this.totalTime,
+        totalTran: this.totalTransfers
+      });
+      console.log(this.total)
+    }
   }
 
-  findRoutesEconomy(currentCity?: string, targetCity?: string, visited?: any[]): any{
-    if (currentCity === targetCity) {
-      return true
-    }
+  handlePushRoute(): void {
+    const currentRoutes = this.routerService.jsonRouter.find((road: RoutingType) => road.from === this.selectedStart)
 
-    const currentRoutes = this.routerService.jsonRouter.find((road: RoutingType) => road.from === currentCity)
-
-    if (!currentRoutes) {
-      return false
-    }
-
-    for (let travel of currentRoutes.travel) {
-
-        if (!visited?.includes(travel.to)) {
-          visited?.push(travel.to)
-
-          this.route.push({
-            from: currentCity,
-            to: travel.to,
-            price: travel.price,
-            time: travel.time,
-          })
-  
-          if (this.findRoutesEconomy(travel.to, targetCity, visited)) {
-            this.totalPrice += travel.price
-            this.totalTime += travel.time
-            this.totalTransfers = visited!.length - 1
-            return true
-          }
-    
-          this.route.pop()
-          visited?.pop()
-        }
-    }
-    return false
-  }
-
-  findRoutesFastest(currentCity?: string, targetCity?: string, visited?: any[]): any{
-    if (currentCity === targetCity) {
-      return true
-    }
-
-    const currentRoutes = this.routerService.jsonRouter.find((road: RoutingType) => road.from === currentCity)
-
-    if (!currentRoutes) {
-      return false
-    }
-
-    for (let travel of currentRoutes.travel) {
-
-        if (!visited?.includes(travel.to)) {
-          visited?.push(travel.to)
-
-          this.route.push({
-            from: currentCity,
-            to: travel.to,
-            price: travel.price,
-            time: travel.time,
-          })
-  
-          if (this.findRoutesEconomy(travel.to, targetCity, visited)) {
-            this.totalPrice += travel.price
-            this.totalTime += travel.time
-            this.totalTransfers = visited!.length - 1
-            return true
-          }
-    
-          this.route.pop()
-          visited?.pop()
-        }
-    }
-    return false
-  }
-
-  findRoutesLowTransfers(currentCity?: string, targetCity?: string, visited?: any[]): boolean {
-    if (currentCity === targetCity) {
-      return true;
-    }
-
-    const currentRoutes = this.routerService.jsonRouter.find((road: RoutingType) => road.from === currentCity);
-    if (!currentRoutes) {
-      return false;
-    }
-
-    for (let travel of currentRoutes.travel) {
-      if (!visited?.includes(travel.to)) {
-        visited?.push(travel.to);
+    if (currentRoutes && currentRoutes.travel) {
+      const route = currentRoutes.travel.find((travel: travel) => travel.to === this.selectedFinish)
+      if (route) {
         this.route.push({
+          from: this.selectedStart,
+          to: this.selectedFinish,
+          price: route.price,
+          time: route.time,
+        })
+
+        this.totalPrice = route.price
+        this.totalTime = route.time
+        this.totalTransfers = 0
+        this.openTable = true
+      } else {
+        this.openTable = false
+        alert('Маршрут не найден')
+      }
+    }
+  }
+
+  findRoutes(currentCity: string, targetCity: string, visited: string[], currentPath: any[]): any[] {
+    if (currentCity === targetCity) {
+      const totalPrice = currentPath.reduce((sum, travel) => sum + travel.price, 0)
+      const totalTime = currentPath.reduce((sum, travel) => sum + travel.time, 0)
+      const totalTransfers = currentPath.length - 1
+      return [{
+        path: [...currentPath],
+        totalPrice,
+        totalTime,
+        totalTransfers
+      }];
+    }
+
+    const currentRoutes = this.routerService.jsonRouter.find((road: RoutingType) => road.from === currentCity)
+
+    if (!currentRoutes) {
+      return []
+    }
+
+    let allRoutes: any[] = []
+
+    for (let travel of currentRoutes.travel || []) {
+      if (!visited.includes(travel.to)) {
+        visited.push(travel.to)
+        currentPath.push({
           from: currentCity,
           to: travel.to,
           price: travel.price,
           time: travel.time,
         });
 
-        if (this.findRoutesLowTransfers(travel.to, targetCity, visited)) {
-          this.totalPrice += travel.price;
-          this.totalTime += travel.time;
-          this.totalTransfers = visited!.length - 1
-          return true;
-        }
+        const routes = this.findRoutes(travel.to, targetCity, visited, currentPath)
+        allRoutes = allRoutes.concat(routes)
 
-        this.route.pop();
-        visited?.pop();
+        currentPath.pop()
+        visited.pop()
       }
     }
 
-    return false;
+    return allRoutes
   }
 }

@@ -1,49 +1,45 @@
 <div class="route">
-    <div class="choice">
+  <div class="choice">
 
-       <button (click)="dropStart()">Откуда</button>
-       <div class="from" [class.openStart]="openStart">
-        <section>
-                <option class="city" *ngFor="let city of this.routerService.jsonRouter" (click)="getStart(city); dropStart()">
-                    {{ city.from }}
-                </option>
-        </section>
-       </div>
-       <span class="selected">{{ start?.from }}</span>
+    <button (click)="dropStart()">Откуда</button>
+    <div class="from" [class.openStart]="openStart">
+      <section>
+        <option class="city" *ngFor="let city of this.routerService.jsonRouter" (click)="getStart(city); dropStart()">
+          {{ city.from }}
+        </option>
+      </section>
+    </div>
+    <span class="selected">{{ start?.from }}</span>
 
-       <button (click)="dropFinish()">Куда</button>
-       <div class="to" [class.openFinish]="openFinish">
-        <section>
-            <option class="cities" *ngFor="let cities of this.routerService.jsonRouter" (click)="getFinish(cities); dropFinish()">
-                {{ cities.from }}
-            </option>
-        </section>
-       </div>
-       <span class="selected">{{ finish?.from }}</span>
+    <button (click)="dropFinish()">Куда</button>
+    <div class="to" [class.openFinish]="openFinish">
+      <section>
+        <option class="cities" *ngFor="let cities of this.routerService.jsonRouter"
+          (click)="getFinish(cities); dropFinish()">
+          {{ cities.from }}
+        </option>
+      </section>
+    </div>
+    <span class="selected">{{ finish?.from }}</span>
 
+  </div>
+
+  <div class="categories">
+    <div class="changes">
+      <p>Экономно</p>
+      <input type="checkbox" (change)="handleChangeEconomy()" [checked]="economy">
+    </div>
+    <div class="changes">
+      <p>Быстро</p>
+      <input type="checkbox" (change)="handleChangeFaster()" [checked]="faster">
+    </div>
+    <div class="changes">
+      <p>Меньше пересадок</p>
+      <input type="checkbox" (change)="handleChangeLowTransfers()" [checked]="lowTransfers">
     </div>
 
-    <div class="categories">
-        <div class="changes">
-            <p>Экономно</p>
-            <input type="checkbox" (change)="handleChangeEconomy()" [checked]="economy">
-        </div>
-        <div class="changes">
-            <p>Быстро</p>
-            <input type="checkbox" (change)="handleChangeFaster()" [checked]="faster">
-        </div>
-        <div class="changes">
-            <p>Меньше пересадок</p>
-            <input type="checkbox" (change)="handleChangeLowTransfers()" [checked]="lowTransfers">
-        </div>
-        
-    </div>
-    <app-road
-    [selectedStart]="start" 
-    [selectedFinish]="finish"
-    [changeEconomy]="economy" 
-    [changeFaster]="faster"
-    [changeLowTransfers]="lowTransfers"
-    >
-    </app-road>
+  </div>
+  <app-road [selectedStart]="start?.from" [selectedFinish]="finish?.from" [changeEconomy]="economy"
+    [changeFaster]="faster" [changeLowTransfers]="lowTransfers">
+  </app-road>
 </div>

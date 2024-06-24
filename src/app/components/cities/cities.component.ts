@@ -20,7 +20,7 @@ export class CitiesComponent implements OnInit {
   lowTransfers: boolean = false
 
   constructor(public routerService: RouterService) {this.routerService.jsonRouter = []}
-  
+
 
   ngOnInit(): void {
     this.routerService.getJsonRouter()
