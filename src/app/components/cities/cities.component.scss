@@ -3,6 +3,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    overflow-x: hidden;
     gap: 15px;
 
     padding: 5vh 5vw 2vh 5vw;
@@ -51,6 +52,7 @@
     .categories {
         gap: 15px !important;
         width: 200px !important;
+        padding: 2.5vw !important;
     }
 
     .openStart {
@@ -58,7 +60,12 @@
     }
 
     .openFinish {
-        left: 175px !important;
+        left: 200px !important;
+    }
+
+    .city {
+        padding: 10px 8px;
+        font-size: 12px;
     }
 
     .cities {
