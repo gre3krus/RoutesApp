@@ -54,7 +54,7 @@ export class RoadComponent implements OnInit {
     this.totalTransfers = 0
 
     if (this.selectedStart === this.selectedFinish) {
-      this.handlePushRoute()
+      this.pushRoute()
     } else {
       const allRoutes = this.findRoutes(this.selectedStart, this.selectedFinish, [], [])
 
@@ -87,7 +87,7 @@ export class RoadComponent implements OnInit {
     }
   }
 
-  handlePushRoute(): void {
+  pushRoute(): void {
     const currentRoutes = this.routerService.jsonRouter.find((road: RoutingType) => road.from === this.selectedStart)
 
     if (currentRoutes && currentRoutes.travel) {
