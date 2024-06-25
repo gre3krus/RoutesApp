@@ -33,6 +33,40 @@
     box-shadow: 0 0 10px black;
 }
 
+@media (max-width: 768px) {
+    .choice {
+        width: 350px !important;
+        height: 50px !important;
+    } 
+
+    button {
+        font-size: 12px;
+        padding: 7px !important;
+    }
+
+    .selected, p {
+        font-size: 12px;
+    }
+
+    .categories {
+        gap: 15px !important;
+        width: 200px !important;
+    }
+
+    .openStart {
+        left: 0px !important;
+    }
+
+    .openFinish {
+        left: 175px !important;
+    }
+
+    .cities {
+        padding: 10px 8px;
+        font-size: 12px;
+    }
+}
+
 button {
     letter-spacing: 0.9px;
     user-select: none;
@@ -61,6 +95,7 @@ button {
     user-select: none;
     font-family: "Comfortaa", sans-serif;
     font-optical-sizing: auto;
+    font-size: auto;
     font-weight: 700;
     font-style: normal;
 }

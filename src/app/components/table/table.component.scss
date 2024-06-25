@@ -12,13 +12,21 @@ table {
     table {
         width: 400px;
     }
+
+    th, td {
+        font-size: 14px;
+    }
 }
 
-// @media (max-width: 425px) {
-//     table {
-//         width: 200px;
-//     }
-// }
+@media (max-width: 425px) {
+    table {
+        width: 300px;
+    }
+    
+    th, td {
+        font-size: 12px;
+    }
+}
 
 // @media (max-width: 375px) {
 //     table {

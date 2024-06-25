@@ -87,30 +87,6 @@ export class RoadComponent implements OnInit {
     }
   }
 
-  pushRoute(): void {
-    const currentRoutes = this.routerService.jsonRouter.find((road: RoutingType) => road.from === this.selectedStart)
-
-    if (currentRoutes && currentRoutes.travel) {
-      const route = currentRoutes.travel.find((travel: travel) => travel.to === this.selectedFinish)
-      if (route) {
-        this.route.push({
-          from: this.selectedStart,
-          to: this.selectedFinish,
-          price: route.price,
-          time: route.time,
-        })
-
-        this.totalPrice = route.price
-        this.totalTime = route.time
-        this.totalTransfers = 0
-        this.openTable = true
-      } else {
-        this.openTable = false
-        alert('Маршрут не найден')
-      }
-    }
-  }
-
   findRoutes(currentCity: string, targetCity: string, visited: string[], currentPath: any[]): any[] {
     if (currentCity === targetCity) {
       const totalPrice = currentPath.reduce((sum, travel) => sum + travel.price, 0)
@@ -151,5 +127,29 @@ export class RoadComponent implements OnInit {
     }
 
     return allRoutes
+  }
+
+  pushRoute(): any {
+    const currentRoutes = this.routerService.jsonRouter.find((road: RoutingType) => road.from === this.selectedStart)
+
+    if (currentRoutes && currentRoutes.travel) {
+      const route = currentRoutes.travel.find((travel: travel) => travel.to === this.selectedFinish)
+      if (route) {
+        this.route.push({
+          from: this.selectedStart,
+          to: this.selectedFinish,
+          price: route.price,
+          time: route.time,
+        })
+
+        this.totalPrice = route.price
+        this.totalTime = route.time
+        this.totalTransfers = 0
+        this.openTable = true
+      } else {
+        this.openTable = false
+        alert('Маршрут не найден')
+      }
+    }
   }
 }
